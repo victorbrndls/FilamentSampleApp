@@ -107,10 +107,11 @@ class ModelRenderer {
 			duration = 3000
 		}
 
+		// This is to filter lights out, I don't want to animate lights
 		val entitiesToAnimate = modelViewer.asset!!.entities.toList().filter { entity ->
 			val name = modelViewer.asset!!.getName(entity)
 			// The pieces I want to animate are named "Color*" and "Cube*" in the glb model
-			name.startsWith("Color") || !name.startsWith("Cube")
+			name.startsWith("Color") || name.startsWith("Cube")
 		}
 
 		entitiesToAnimate.forEach { entity ->
